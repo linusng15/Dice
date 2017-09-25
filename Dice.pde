@@ -4,9 +4,10 @@ void setup()
 	noLoop();
 	background(0);
 }
-
 void draw()
 {
+	background(0);
+	int sum = 0;
 //your code here
 	for (int y= 10; y < 250; y = y + 60)
 	{
@@ -15,9 +16,11 @@ void draw()
 			Die hi = new Die(x,y);
 			hi.show();
 			hi.roll();
+			textSize(30);
+			sum = sum + hi.numDots;
 		}
 	}
-	
+	text ("sum:" + sum,100,270);
 }
 void mousePressed()
 {
@@ -26,18 +29,19 @@ void mousePressed()
 class Die //models one single dice cube
 {
 	//variable declarations here
+
 	int myX,myY,numDots;
 	Die(int x, int y) //constructor
 	{	
 		roll();
 		myX=x;
 		myY=y;
-		
 		//variable initializations here
 	}
 	void roll()
 	{
-		numDots = (int)((Math.random()*6)+1);	
+		numDots = (int)((Math.random()*6)+1);
+
 	}
 	void show()
 	{
